@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweep TV Nigeria | Modern APC News</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #E53935;
+            --soft-bg: #f4f7f6;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --dark-blue: #1A237E;
+            --footer-dark: #111111;
+        }
+
+        body { 
+            font-family: 'Inter', system-ui, -apple-system, sans-serif; 
+            background-color: var(--soft-bg);
+            color: #333;
+        }
+
+        /* Modern Top Bar */
+        .top-bar { 
+            background: #fff; 
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+            font-size: 0.85rem;
+        }
+
+        /* Glassmorphism Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.9) !important;
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .navbar-brand { 
+            font-weight: 900; 
+            letter-spacing: -1px;
+            font-size: 2rem;
+            color: var(--primary-red) !important;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: #444 !important;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover { color: var(--primary-red) !important; }
+
+        /* Breaking News Ticker */
+        .ticker-wrap {
+            background: #fff;
+            padding: 10px;
+            border-radius: 50px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .ticker-label {
+            background: var(--primary-red);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            margin-right: 15px;
+        }
+
+        /* Hero Section */
+        .hero-container {
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            height: 500px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hero-container:hover .hero-img { transform: scale(1.05); }
+
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            color: white;
+        }
+
+        /* Post Cards */
+        .post-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            border: none;
+            transition: 0.3s;
+            height: 100%;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow);
+        }
+
+        .category-badge {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--primary-red);
+            letter-spacing: 1px;
+        }
+
+        /* Sidebar Styling */
+        .sidebar-widget {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 30px;
+        }
+
+        /* NEW FOOTER STYLING */
+        .footer-modern {
+            background: var(--footer-dark);
+            color: #fff;
+            padding: 80px 0 30px;
+            border-radius: 40px 40px 0 0;
+            margin-top: 80px;
+        }
+
+        .footer-logo {
+            font-weight: 900;
+            font-size: 2rem;
+            color: var(--primary-red);
+            text-decoration: none;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-link {
+            color: #aaa;
+            text-decoration: none;
+            transition: 0.3s;
+            display: block;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-red);
+            padding-left: 8px;
+        }
+
+        .footer-social-link {
+            width: 40px;
+            height: 40px;
+            background: #222;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: #fff;
+            margin-right: 10px;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .footer-social-link:hover {
+            background: var(--primary-red);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #222;
+            margin-top: 50px;
+            padding-top: 30px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .newsletter-input {
+            background: #222;
+            border: 1px solid #333;
+            color: #fff;
+            border-radius: 30px;
+            padding: 12px 20px;
+        }
+
+        .newsletter-input:focus {
+            background: #222;
+            color: #fff;
+            border-color: var(--primary-red);
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar d-none d-md-block">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div id="nigerian-clock" class="text-muted fw-medium"></div>
+            <div class="social-icons">
+                <a href="#" class="text-muted me-3 text-decoration-none"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-muted me-3 text-decoration-none"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-muted text-decoration-none"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">SWEEP<span style="color:#222">TV</span></a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                      <li class="nav-item"><a class="nav-link" href="index.html">Home </a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Politics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Business</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Health</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Tech</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Entertainment</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">World</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Sport</a></li>
+                    <li class="nav-item"><a class="nav-link text-danger fw-bold" href="about.html">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-4">
+        <div class="ticker-wrap">
+            <span class="ticker-label">BREAKING</span>
+            <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+                Presidency Announces New Infrastructure Grants for All 36 States... Super Eagles Set for Crucial Match... APC Youth Wing Mobilizes for 2027 Roadmap...
+            </marquee>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="hero-container mb-5">
+                    <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?q=80&w=2070" class="hero-img" alt="Hero">
+                    <div class="hero-overlay">
+                        <span class="badge bg-danger mb-3">EXCLUSIVE</span>
+                        <h1 class="display-6 fw-bold">Inside APC's Strategic 2027 Blueprint: Internal Reforms and Reconciliation</h1>
+                        <p class="opacity-75">An in-depth look at how the ruling party intends to reshape its structural integrity ahead of the next cycle.</p>
+                    </div>
+                </div>
+
+                <h4 class="fw-bold mb-4">The Latest</h4>
+                <div class="row g-4 mb-5">
+                    <div class="col-md-6">
+                        <div class="post-card card">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500" class="card-img-top" style="height:200px; object-fit:cover;" alt="Biz">
+                            <div class="card-body">
+                                <span class="category-badge">Economy</span>
+                                <h5 class="fw-bold mt-2">Naira Gains Momentum as Central Bank Intervenes</h5>
+                                <p class="text-muted small">Financial experts weigh in on the recent stabilization of the currency.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="post-card card">
+                            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=500" class="card-img-top" style="height:200px; object-fit:cover;" alt="Health">
+                            <div class="card-body">
+                                <span class="category-badge">Health</span>
+                                <h5 class="fw-bold mt-2">New Federal Policy Targets Malaria Eradication</h5>
+                                <p class="text-muted small">The Ministry of Health partners with WHO for a nationwide rollout.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="sidebar-widget">
+                    <h5 class="fw-bold mb-4">Trending Now</h5>
+                    <div class="d-flex mb-3 align-items-center">
+                        <div class="h3 fw-bold text-light me-3">01</div>
+                        <div>
+                            <h6 class="fw-bold mb-0">Tinubu Approves Lagos Tech Corridor</h6>
+                            <small class="text-muted">2 hours ago</small>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3 align-items-center">
+                        <div class="h3 fw-bold text-light me-3">02</div>
+                        <div>
+                            <h6 class="fw-bold mb-0">New Crypto Tax Framework Released</h6>
+                            <small class="text-muted">5 hours ago</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-widget bg-danger text-white text-center">
+                    <h6>ADVERTISE WITH US</h6>
+                    <p class="small opacity-75">Reach over 5 million monthly readers</p>
+                    <button class="btn btn-light btn-sm fw-bold">View Rates</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-modern">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <a class="footer-logo" href="#">SWEEP<span class="text-white">TV</span></a>
+                    <p class="text-muted pe-lg-5">Nigeria's premier digital news platform providing real-time updates on politics, economy, and national development.</p>
+                    <div class="mt-4">
+                        <a href="#" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="footer-social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-4 text-uppercase small">Categories</h6>
+                    <a href="#" class="footer-link">Politics</a>
+                    <a href="#" class="footer-link">Business</a>
+                    <a href="#" class="footer-link">Health & Tech</a>
+                    <a href="#" class="footer-link">Sports</a>
+                </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-4 text-uppercase small">Company</h6>
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="#" class="footer-link">Our Team</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Contact</a>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <h6 class="fw-bold mb-4 text-uppercase small">Stay Connected</h6>
+                    <p class="text-muted small">Subscribe for the latest APC updates and national bulletins.</p>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control newsletter-input" placeholder="Email Address">
+                        <button class="btn btn-danger rounded-pill px-4 ms-2" type="button">Join</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <p class="mb-0">&copy; 2026 Sweep TV Nigeria. All rights reserved.</p>
+                <p class="mb-0 mt-2 mt-md-0">Truth. Progress. Democracy.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function updateTime() {
+            const options = { 
+                timeZone: 'Africa/Lagos', 
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', 
+                hour: '2-digit', minute: '2-digit', second: '2-digit'
+            };
+            const formatter = new Intl.DateTimeFormat('en-NG', options);
+            const clockElement = document.getElementById('nigerian-clock');
+            if(clockElement) {
+                clockElement.innerText = formatter.format(new Date()) + " WAT";
+            }
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
